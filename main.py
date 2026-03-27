@@ -78,10 +78,12 @@ def peoples_data(city:Optional[str]=None,age:Optional[int]=None):
     #     raise HTTPException(status_code={202})
 
 
+
 #pydantic models bro 
 class Products(BaseModel):
     pname:str = Field(...,min_length=3)
     pnumber:int
+
 
 all_product = {}
 product_id = 1
@@ -97,9 +99,11 @@ def create_product(product:Products):
     product_id += 1
     return response
 
+
 @app.get('/products')
 def products():
     return all_product
+
 
 #CURD Operations Broo😁
 @app.put('/products/{product_id}')
@@ -108,6 +112,7 @@ def product_up(product_id:int,products:Products):
         raise HTTPException(status_code=404,detail='Product Not found')
     all_product[product_id]=products
     return {"messaage":"Product updated","product":products}
+
 
 @app.delete('/products/{product_id}')
 def product_deleting(product_id:int):
