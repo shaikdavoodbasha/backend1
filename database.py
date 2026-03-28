@@ -39,6 +39,7 @@ def create_user(user:CreateUser,session:SessionDep):
     return new_user
 
 
+
 #here why we are using the response model  beacuse to getting the response data in list format
 @app.get('/allusers',response_model=list[User])
 def get_users(session:SessionDep):
